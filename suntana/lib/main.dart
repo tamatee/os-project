@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,6 +60,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  bool isLoading = false;
+  FilePickerResult? result;
 
   void _incrementCounter() {
     setState(() {
@@ -67,6 +72,33 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  void pickFile() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['png', 'jpg'],
+        allowMultiple: false,
+      );
+
+      final file = result!.files.first;
+
+      print('Name: ${file.name}');
+      // print('Bytes: ${file.bytes}');
+      print('Size: ${file.size}');
+      print('Extension: ${file.extension}');
+
+      setState(() {
+        isLoading = false;
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -107,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'You have selected:',
             ),
             Text(
               '$_counter',
@@ -117,8 +149,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        // onPressed: _incrementCounter,
+        onPressed: pickFile,
+        tooltip: 'Choose File',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
