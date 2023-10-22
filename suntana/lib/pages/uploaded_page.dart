@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:suntana/components/download_button.dart';
 import 'package:suntana/components/reset_button.dart';
-import 'main_page.dart';
-import 'uploaded_page.dart';
+import 'package:suntana/pages/main_page.dart';
 
-class ConvertedPage extends StatelessWidget {
-  const ConvertedPage({super.key});
+import '../components/next_button.dart';
+import 'converted_page.dart';
+
+class UploadedPage extends StatelessWidget {
+  const UploadedPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class ConvertedPage extends StatelessWidget {
               children: [
                 ResetButton(nextPage: MainPage()),
                 SizedBox(width: 20),
-                DownloadButton(),
+                ConvertButton(nextPage: ConvertedPage()),
               ],
             )
           ]),

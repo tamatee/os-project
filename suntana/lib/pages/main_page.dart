@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suntana/pages/uploaded_page.dart';
 
 import '../components/next_button.dart';
 import '../components/upload_button.dart';
@@ -17,18 +18,10 @@ class MainPage extends StatelessWidget {
         body: Center(
           child: Column(children: [
             SizedBox(height: 50),
-            Container(
-              width: 400,
-              height: 300,
-              decoration: BoxDecoration(color: Colors.amber),
-            ),
-            SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                UploadButton(),
-                SizedBox(width: 20),
-                NextButton(nextPage: ConvertedPage()),
+                UploadButton(nextPage: UploadedPage()),
               ],
             )
           ]),
