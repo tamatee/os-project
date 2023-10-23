@@ -5,12 +5,20 @@ class DownloadButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 120,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.blue[300]),
-        child: const Center(
-          child: Text("Download"),
-        ));
+    return Center(
+      child: Container(
+          width: 120,
+          height: 50,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Colors.red,Colors.yellow]),
+            borderRadius: BorderRadius.circular(10)
+          ),
+          child: const Center(
+            child: Text("Download",
+              style: TextStyle(color: Colors.white),
+            ),
+          )
+        ),
+    );
   }
 }

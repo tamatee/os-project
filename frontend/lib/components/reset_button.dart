@@ -17,12 +17,21 @@ class ResetButton extends StatelessWidget {
           return nextPage;
         }), (route) => false);
       },
-      child: Container(
-        width: 120,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.amber[300]),
-        child: const Center(
-          child: Text("Reset"),
+      child: Center(
+        child: Container(
+          width: 120,
+          height: 50,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors:[Colors.blue,Colors.purple]
+            ),
+            borderRadius: BorderRadius.circular(10)
+          ),
+          child: const Center(
+            child: Text("Reset",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
         ),
       ),
     );

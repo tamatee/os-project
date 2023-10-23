@@ -13,12 +13,18 @@ class ConvertButton extends StatelessWidget {
           return nextPage;
         }), (route) => false);
       },
-      child: Container(
-        width: 120,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.green[300]),
-        child: const Center(
-          child: Text("Convert"),
+      child: Center(
+        child: Container(
+          width: 120,
+          height: 50,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Colors.green,Colors.yellow]),
+            borderRadius: BorderRadius.circular(10)
+          ),
+          child: const Center(
+            child: Text("Convert",
+            style: TextStyle(color: Colors.white),),
+          ),
         ),
       ),
     );
