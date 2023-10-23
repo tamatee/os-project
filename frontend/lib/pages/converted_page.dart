@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suntana/components/download_button.dart';
+import 'package:suntana/components/download_frame.dart';
 import 'package:suntana/components/reset_button.dart';
 import 'main_page.dart';
 
@@ -10,25 +11,35 @@ class ConvertedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amber,
-          title: Center(child: Text("Image Converter")),
-        ),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        title: const Center(
+          child: Text(
+          "Image Converter",
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold,fontSize: 30),
+        )),
+      ),
         body: Center(
           child: Column(children: [
-            SizedBox(height: 50),
-            Container(
-              width: 400,
-              height: 300,
-              decoration: BoxDecoration(color: Colors.amber),
-            ),
-            SizedBox(height: 50),
+            const SizedBox(height: 30),
+            download_frame(),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ResetButton(nextPage: MainPage()),
-                SizedBox(width: 20),
-                DownloadButton(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ResetButton(nextPage: MainPage()),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DownloadButton(),
+                ),
               ],
+            ),
+            const SizedBox(height: 30),
+            Center(
+              child: Text('Your photo has been converted successfully',
+              style: TextStyle(color:Colors.black,fontWeight: FontWeight.normal ,fontSize: 20), 
+              ),
             )
           ]),
         ),

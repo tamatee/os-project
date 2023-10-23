@@ -17,8 +17,8 @@ class showfoto extends State<checkfoto> {
                   ? const ImageFrame()
                   : const Text(
                       // else then show text
-                      "Doesn't upload the image yet",
-                      style: TextStyle(fontSize: 20),
+                      "Pls Upload your Photo",
+                      style: TextStyle(fontSize: 15),
                     );
   }
 }

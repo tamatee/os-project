@@ -20,22 +20,24 @@ class _UploadButtonState extends State<UploadButton> {
               context.read<ImageModel>().resetImage();
             context.read<ImageModel>().setImage();
           },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Container(
                 width: 120,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.red[300],
+                  gradient: LinearGradient(
+                    colors: [Colors.orange, Colors.red],
+                  ),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(
-                  child: Text("Upload"),
+                  child: Text(
+                    "Upload",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ),
-          ),
         ),
       ],
     );
