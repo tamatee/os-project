@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:suntana/components/checkphoto.dart';
 import 'package:suntana/components/convert_button.dart';
+import 'package:suntana/components/frame.dart';
 import 'package:suntana/components/image_show.dart';
 import 'package:suntana/components/upload_button.dart';
 import 'package:suntana/pages/converted_page.dart';
@@ -14,6 +18,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
+  final List pic = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,19 +32,9 @@ class _MainPageState extends State<MainPage> {
           return ListView(
             children: [
               const SizedBox(height: 30),
+              frame(),
               UploadButton(),
               const SizedBox(height: 30),
-
-              //if image is not null then show the image
-              context.read<ImageModel>().getImage() != null
-                  ? const ImageFrame()
-                  : const Text(
-                      // else then show text
-                      "Doesn't upload the image yet",
-                      style: TextStyle(fontSize: 20),
-                    ),
-              const SizedBox(height: 30),
-
               // if image is not null then show the convert button
               context.read<ImageModel>().getImage() != null
                   ? ConvertButton(nextPage: const ConvertedPage())

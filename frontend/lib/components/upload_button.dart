@@ -12,20 +12,32 @@ class UploadButton extends StatefulWidget {
 class _UploadButtonState extends State<UploadButton> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (context.read<ImageModel>().getImage() != null)
-          context.read<ImageModel>().resetImage();
-        context.read<ImageModel>().setImage();
-      },
-      child: Container(
-        width: 120,
-        height: 50,
-        decoration: BoxDecoration(color: Colors.red[300]),
-        child: const Center(
-          child: Text("Upload"),
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () {
+            if (context.read<ImageModel>().getImage() != null)
+              context.read<ImageModel>().resetImage();
+            context.read<ImageModel>().setImage();
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Container(
+                width: 120,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.red[300],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Center(
+                  child: Text("Upload"),
+                ),
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
