@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/image_model.dart';
 
 class ResetButton extends StatelessWidget {
   Widget nextPage;
@@ -8,6 +11,7 @@ class ResetButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        context.read<ImageModel>().resetImage();
         Navigator.pushAndRemoveUntil(context,
             MaterialPageRoute(builder: (BuildContext context) {
           return nextPage;

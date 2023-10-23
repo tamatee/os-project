@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suntana/models/image_model.dart';
 
-class UploadButton extends StatelessWidget {
-  Widget nextPage;
-  UploadButton({super.key, required this.nextPage});
+class UploadButton extends StatefulWidget {
+  UploadButton({super.key});
 
+  @override
+  State<UploadButton> createState() => _UploadButtonState();
+}
+
+class _UploadButtonState extends State<UploadButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushAndRemoveUntil(context,
-            MaterialPageRoute(builder: (BuildContext context) {
-          return nextPage;
-        }), (route) => false);
+        if (context.read<ImageModel>().getImage() != null)
+          context.read<ImageModel>().resetImage();
+        context.read<ImageModel>().setImage();
       },
       child: Container(
         width: 120,

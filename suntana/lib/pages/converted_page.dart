@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:suntana/components/download_button.dart';
 import 'package:suntana/components/reset_button.dart';
 import 'main_page.dart';
-import 'uploaded_page.dart';
 
 class ConvertedPage extends StatelessWidget {
   const ConvertedPage({super.key});
