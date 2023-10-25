@@ -18,12 +18,13 @@ class ConvertButton extends StatelessWidget {
           width: 120,
           height: 50,
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.green,Colors.yellow]),
-            borderRadius: BorderRadius.circular(10)
-          ),
+              gradient: LinearGradient(colors: [Colors.green, Colors.yellow]),
+              borderRadius: BorderRadius.circular(10)),
           child: const Center(
-            child: Text("Convert",
-            style: TextStyle(color: Colors.white),),
+            child: Text(
+              "Convert",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ),
       ),
