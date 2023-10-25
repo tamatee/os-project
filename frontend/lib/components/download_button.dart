@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_downloader/image_downloader.dart';
 import 'package:provider/provider.dart';
 import 'package:suntana/models/image_model.dart';
 
@@ -9,10 +8,7 @@ class DownloadButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        await ImageDownloader.downloadImage(
-            context.read<ImageModel>().getRes()!);
-      },
+      onTap: () async {},
       child: Center(
         child: Container(
           width: 120,
