@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:image/image.dart';
@@ -9,12 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageModel extends ChangeNotifier {
-  XFile? image;
+  String? image;
   final ImagePicker picker = ImagePicker();
   static String? res;
   Future setImage() async {
-    var img = await picker.pickImage(source: ImageSource.gallery);
-    image = img;
+    image = res;
     notifyListeners();
   }
 
@@ -47,11 +44,11 @@ class ImageModel extends ChangeNotifier {
       FormData data = FormData.fromMap({
         "key": "5e621abb741e209c762ec4434643639d",
         // binary image data
-        "image": await MultipartFile.fromBytes(fileBytes, filename: filename),
+        "image": MultipartFile.fromBytes(fileBytes, filename: filename),
         "name": "test"
       });
 
-      print("convert completed");
+      // alert("convert completed");
 
       var response = await dio.post("https://api.imgbb.com/1/upload",
           data: data, onSendProgress: (int sent, int total) {
@@ -65,7 +62,7 @@ class ImageModel extends ChangeNotifier {
       // print(response.data);
       // return response.data;
     } else {
-      print("Image NOT FOUND");
+      // print("Image NOT FOUND");
       // return null;
     }
     notifyListeners();
