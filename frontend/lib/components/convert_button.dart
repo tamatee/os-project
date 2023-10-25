@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ConvertButton extends StatelessWidget {
   Widget nextPage;
   ConvertButton({super.key, required this.nextPage});
@@ -20,7 +21,7 @@ class ConvertButton extends StatelessWidget {
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [Colors.green, Colors.yellow]),
               borderRadius: BorderRadius.circular(10)),
-          child: const Center(
+          child: Center(
             child: Text(
               "Convert",
               style: TextStyle(color: Colors.white),

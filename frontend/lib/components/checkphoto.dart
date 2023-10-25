@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:suntana/components/image_show.dart';
-import 'package:suntana/models/image_model.dart';
+import 'package:imageconverter/components/image_show.dart';
+import 'package:imageconverter/models/image_model.dart';
 
 class checkfoto extends StatefulWidget {
-  const checkfoto({super.key});
+  checkfoto({super.key});
 
   @override
   State<checkfoto> createState() => showfoto();

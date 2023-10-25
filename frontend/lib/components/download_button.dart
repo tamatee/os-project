@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:suntana/models/image_model.dart';
 
 class DownloadButton extends StatelessWidget {
   const DownloadButton({super.key});
@@ -16,7 +14,7 @@ class DownloadButton extends StatelessWidget {
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [Colors.red, Colors.yellow]),
               borderRadius: BorderRadius.circular(10)),
-          child: const Center(
+          child: Center(
             child: Text(
               "Download",
               style: TextStyle(color: Colors.white),

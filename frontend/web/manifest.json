@@ -1,6 +1,6 @@
 {
-    "name": "suntana",
-    "short_name": "suntana",
+    "name": "frontend",
+    "short_name": "frontend",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

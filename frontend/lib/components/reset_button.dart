@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/image_model.dart';
 
+// ignore: must_be_immutable
 class ResetButton extends StatelessWidget {
   Widget nextPage;
   ResetButton({super.key, required this.nextPage});
@@ -22,13 +23,11 @@ class ResetButton extends StatelessWidget {
           width: 120,
           height: 50,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors:[Colors.blue,Colors.purple]
-            ),
-            borderRadius: BorderRadius.circular(10)
-          ),
-          child: const Center(
-            child: Text("Reset",
+              gradient: LinearGradient(colors: [Colors.blue, Colors.purple]),
+              borderRadius: BorderRadius.circular(10)),
+          child: Center(
+            child: Text(
+              "Reset",
               style: TextStyle(color: Colors.white),
             ),
           ),
