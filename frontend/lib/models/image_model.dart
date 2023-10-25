@@ -1,22 +1,27 @@
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import 'dart:typed_data';
-import 'package:file_picker/file_picker.dart';
+
 import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:image/image.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ImageModel extends ChangeNotifier {
-  XFile? image;
+  FilePickerResult? image;
   final ImagePicker picker = ImagePicker();
+  FilePickerResult? result;
 
   Future setImage() async {
-    var img = await picker.pickImage(source: ImageSource.gallery);
-    image = img;
-    print(image!.path);
+    result = await FilePicker.platform.pickFiles(type: FileType.image);
+    image = result;
+    // print(image!.path);
     notifyListeners();
+    return result;
   }
 
-  XFile? getImage() {
-    return image;
+  List<String?> getImage() {
+    return result!.paths;
   }
 
   void resetImage() {
@@ -24,33 +29,40 @@ class ImageModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future uploadFile() async {
-    var dio = Dio();
+  // Future uploadFile() async {
+  //   result = await FilePicker.platform.pickFiles(type: FileType.image);
+  // }
 
-    FilePickerResult? result =
-        await FilePicker.platform.pickFiles(type: FileType.image);
+  Future convertFile() async {
+    // var dio = Dio();
 
     if (result != null) {
-      Uint8List? fileBytes = result.files.single.bytes;
-      String filename = result.files.single.name;
+      final test = decodeJpg(result!.files.single.bytes!);
 
-      FormData data = FormData.fromMap({
-        "key": "5e621abb741e209c762ec4434643639d",
-        // binary image data
-        "image": await MultipartFile.fromBytes(fileBytes!, filename: filename),
-        "name": "test"
-      });
+      // save to file
+      final convertedFile = File('ooh.png');
+      convertedFile.writeAsBytesSync(encodePng(test!));
+      print("Convert completed");
 
-      var response = await dio.post("https://api.imgbb.com/1/upload",
-          data: data, onSendProgress: (int sent, int total) {
-        print("$sent $total");
-      });
+      Uint8List? fileBytes = convertedFile.readAsBytesSync();
+      String filename = convertedFile.toString();
 
-      print(response.data);
-      return response.data;
-    } else {
-      print("Result is null");
-      return null;
+      print(filename);
+
+      // FormData data = FormData.fromMap({
+      //   "key": "5e621abb741e209c762ec4434643639d",
+      //   // binary image data
+      //   "image": await MultipartFile.fromBytes(fileBytes!, filename: filename),
+      //   "name": "test"
+      // });
+
+      // var response = await dio.post("https://api.imgbb.com/1/upload",
+      //     data: data, onSendProgress: (int sent, int total) {
+      //   print("$sent $total");
+      // });
+
+      // print(response.data);
+      // return response.data;
     }
   }
 }

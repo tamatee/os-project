@@ -16,10 +16,10 @@ class _UploadButtonState extends State<UploadButton> {
       children: [
         GestureDetector(
           onTap: () {
-            context.read<ImageModel>().uploadFile();
-            // if (context.read<ImageModel>().getImage() != null)
-            //   context.read<ImageModel>().resetImage();
-            // context.read<ImageModel>().setImage();
+            // context.read<ImageModel>().uploadFile();
+            if (context.read<ImageModel>().getImage() != null)
+              context.read<ImageModel>().resetImage();
+            context.read<ImageModel>().setImage();
           },
             child: Center(
               child: Container(

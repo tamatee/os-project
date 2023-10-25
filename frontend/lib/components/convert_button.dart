@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suntana/models/image_model.dart';
 
 class ConvertButton extends StatelessWidget {
   Widget nextPage;
@@ -8,6 +10,7 @@ class ConvertButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        context.read<ImageModel>().convertFile();
         Navigator.pushAndRemoveUntil(context,
             MaterialPageRoute(builder: (BuildContext context) {
           return nextPage;
