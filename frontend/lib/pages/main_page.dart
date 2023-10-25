@@ -42,7 +42,7 @@ class _MainPageState extends State<MainPage> {
                     padding: const EdgeInsets.all(16.0),
                     child: UploadButton(),
                   ),
-                  if(context.read<ImageModel>().getImage() != null)
+                  if(context.read<ImageModel>().getRes() != null)
                    ConvertButton(nextPage: const ConvertedPage())
                 ]
               )

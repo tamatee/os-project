@@ -13,12 +13,12 @@ class checkfoto extends StatefulWidget {
 class showfoto extends State<checkfoto> {
   @override
   Widget build(BuildContext context) {
-    return context.read<ImageModel>().getImage() != null
-                  ? const ImageFrame()
-                  : const Text(
-                      // else then show text
-                      "Pls Upload your Photo",
-                      style: TextStyle(fontSize: 15),
-                    );
+    return context.read<ImageModel>().getRes() != null
+        ? const ImageFrame()
+        : const Text(
+            // else then show text
+            "Pls Upload your Photo",
+            style: TextStyle(fontSize: 15),
+          );
   }
 }

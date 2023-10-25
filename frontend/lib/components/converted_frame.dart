@@ -19,7 +19,7 @@ class squareFrame extends State<converted_frame> {
                   child: GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: (){
-                      if (context.read<ImageModel>().getImage() != null)
+                      if (context.read<ImageModel>().getRes() != null)
                         context.read<ImageModel>().resetImage();
                       context.read<ImageModel>().setImage();
                     },

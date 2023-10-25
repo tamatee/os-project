@@ -8,11 +8,12 @@ class ImageFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(ImageModel().getRes()!);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: Image.network(context.read<ImageModel>().getImage()!.path),
+        child: Image.network(context.read<ImageModel>().getRes()!),
       ),
     );
   }
