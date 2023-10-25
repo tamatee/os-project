@@ -23,7 +23,7 @@ class ImageModel extends ChangeNotifier {
   // }
 
   void resetImage() {
-    image = null;
+    res = null;
     notifyListeners();
   }
 
