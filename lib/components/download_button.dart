@@ -1,4 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:imageconverter/models/image_model.dart';
+import 'package:provider/provider.dart';
 
 class DownloadButton extends StatelessWidget {
   const DownloadButton({super.key});
@@ -6,7 +10,9 @@ class DownloadButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {},
+      onTap: () async {
+        await downloadFile(context.read<ImageModel>().getRes()!);
+      },
       child: Center(
         child: Container(
           width: 120,
@@ -14,14 +20,20 @@ class DownloadButton extends StatelessWidget {
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [Colors.red, Colors.yellow]),
               borderRadius: BorderRadius.circular(10)),
-          child: Center(
+          child: const Center(
             child: Text(
-              "Download",
+              "Get Image",
               style: TextStyle(color: Colors.white),
             ),
           ),
         ),
       ),
     );
+  }
+
+  downloadFile(url) {
+    AnchorElement anchorElement = new AnchorElement(href: url);
+    anchorElement.download = "Flutter Logo";
+    anchorElement.click();
   }
 }
