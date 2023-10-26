@@ -17,7 +17,7 @@ class _UploadButtonState extends State<UploadButton> {
         GestureDetector(
           onTap: () {
             context.read<ImageModel>().uploadFile();
-            if (context.read<ImageModel>().getRes() == null) {
+            if (context.read<ImageModel>().getRes() != null) {
               context.read<ImageModel>().resetImage();
             }
             context.read<ImageModel>().setImage();
