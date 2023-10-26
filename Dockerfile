@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
@@ -18,7 +18,6 @@ COPY . /app/
 WORKDIR /app/
 RUN flutter pub get
 RUN flutter build web
-RUN apt install
 
 EXPOSE 5000
 
